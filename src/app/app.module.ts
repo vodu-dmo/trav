@@ -1,18 +1,22 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    // Componentes, directivas, etc.
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
+    AngularFireAuthModule
     // Otros módulos
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
