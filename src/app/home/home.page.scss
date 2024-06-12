@@ -1,0 +1,21 @@
+.hero {
+  background: url('../../assets/hero-background.jpg') no-repeat center center / cover;
+  text-align: center;
+  color: white;
+  padding: 100px 20px;
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    ion-button {
+      --background: #3880ff;
+    }
+  }
+}

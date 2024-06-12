@@ -1,13 +1,80 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-title>Empresa de Viajes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/login">Login</ion-button>
+      <ion-button routerLink="/register">Register</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Descubre el Mundo con Nosotros</h1>
+      <p>Explora los mejores destinos y vive experiencias inolvidables.</p>
+      <ion-button color="primary" routerLink="/register">Empieza Ahora</ion-button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>Nuestros Servicios</h2>
+    <div class="service-list">
+      <div class="service-item">
+        <ion-icon name="airplane-outline"></ion-icon>
+        <h3>Viajes Internacionales</h3>
+        <p>Ofrecemos paquetes completos para destinos internacionales.</p>
+      </div>
+      <div class="service-item">
+        <ion-icon name="bed-outline"></ion-icon>
+        <h3>Alojamiento</h3>
+        <p>Reservamos los mejores hoteles para tu comodidad.</p>
+      </div>
+      <div class="service-item">
+        <ion-icon name="car-outline"></ion-icon>
+        <h3>Alquiler de Vehículos</h3>
+        <p>Servicios de alquiler de autos en todos nuestros destinos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Destinations Section -->
+  <section class="destinations">
+    <h2>Destinos Populares</h2>
+    <div class="destinations-list">
+      <div class="destination-item">
+        <img src="assets/destination1.jpg" alt="Destino 1">
+        <h3>París, Francia</h3>
+      </div>
+      <div class="destination-item">
+        <img src="assets/destination2.jpg" alt="Destino 2">
+        <h3>Tokio, Japón</h3>
+      </div>
+      <div class="destination-item">
+        <img src="assets/destination3.jpg" alt="Destino 3">
+        <h3>Roma, Italia</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2>Testimonios de Clientes</h2>
+    <div class="testimonials-list">
+      <div class="testimonial-item">
+        <p>"Un viaje increíble, todo estuvo perfectamente organizado!"</p>
+        <h4>- Juan Pérez</h4>
+      </div>
+      <div class="testimonial-item">
+        <p>"La mejor experiencia de mi vida, gracias por todo."</p>
+        <h4>- María López</h4>
+      </div>
+      <div class="testimonial-item">
+        <p>"Excelentes servicios y atención al cliente."</p>
+        <h4>- Carlos García</h4>
+      </div>
+    </div>
+  </section>
 </ion-content>
