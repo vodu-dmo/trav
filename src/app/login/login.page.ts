@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth'; // Importa AngularFireAuth
-import firebase from 'firebase/app'; // Importa firebase
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth'; // Importa AngularFireAuth correctamente
+import firebase from 'firebase'; // Importa firebase correctamente
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import firebase from 'firebase/app'; // Importa firebase
 })
 export class LoginPage {
 
-  constructor(private afAuth: AngularFireAuth) { } // Inyecta AngularFireAuth
+  constructor(private afAuth: AngularFireAuth) { }
 
   async loginWithGoogle() {
     try {
