@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { LoginPageRoutingModule } from './login-routing.module';
-
-import { LoginPage } from './login.page';
 
 @NgModule({
   imports: [
@@ -15,6 +11,8 @@ import { LoginPage } from './login.page';
     IonicModule,
     LoginPageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [
+    // No declarar LoginPage en LoginPageModule si ya está en AppModule
+  ]
 })
 export class LoginPageModule {}

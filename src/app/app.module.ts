@@ -1,20 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from '@angular/fire/compat';  // Cambia a '@angular/fire/compat'
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';  // Cambia a '@angular/fire/compat/auth'
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginPage } from './login/login.page'; // Asegúrate de importar correctamente
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginPage // Declarar LoginPage solo en AppModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),  // Inicializa AngularFire correctamente
+    AngularFireModule.initializeApp(environment.firebaseConfig), // Inicializa Firebase con la configuración
     AngularFireAuthModule
   ],
   providers: [],

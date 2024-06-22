@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';  // Importa AngularFireAuth desde '@angular/fire/compat/auth'
-import { GoogleAuthProvider } from 'firebase/auth';  // Importa GoogleAuthProvider desde 'firebase/auth'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +9,14 @@ import { GoogleAuthProvider } from 'firebase/auth';  // Importa GoogleAuthProvid
 })
 export class LoginPage {
 
+  email: string = '';
+  password: string = '';
+
   constructor(private afAuth: AngularFireAuth) { }
 
   async loginWithGoogle() {
     try {
-      const provider = new GoogleAuthProvider();  // Utiliza GoogleAuthProvider de 'firebase/auth'
+      const provider = new firebase.auth.GoogleAuthProvider();
       const credential = await this.afAuth.signInWithPopup(provider);
       // Usuario autenticado con éxito, realiza las acciones necesarias
     } catch (error) {
@@ -21,4 +24,15 @@ export class LoginPage {
     }
   }
 
+  async login() {
+    try {
+      const credential = await this.afAuth.signInWithEmailAndPassword(this.email, this.password);
+      // Usuario autenticado con éxito, realiza las acciones necesarias
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+    }
+  }
+
 }
+
+
