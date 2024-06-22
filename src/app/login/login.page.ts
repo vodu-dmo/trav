@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth'; // Importa AngularFireAuth correctamente
-import firebase from 'firebase'; // Importa firebase correctamente
+import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';  // Importa AngularFireAuth desde '@angular/fire/compat/auth'
+import { GoogleAuthProvider } from 'firebase/auth';  // Importa GoogleAuthProvider desde 'firebase/auth'
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,7 @@ export class LoginPage {
 
   async loginWithGoogle() {
     try {
-      const provider = new firebase.auth.GoogleAuthProvider();
+      const provider = new GoogleAuthProvider();  // Utiliza GoogleAuthProvider de 'firebase/auth'
       const credential = await this.afAuth.signInWithPopup(provider);
       // Usuario autenticado con éxito, realiza las acciones necesarias
     } catch (error) {
