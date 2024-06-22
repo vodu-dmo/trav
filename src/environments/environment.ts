@@ -3,12 +3,11 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_AUTH_DOMAIN",
-    projectId: "TU_PROJECT_ID",
-    storageBucket: "TU_STORAGE_BUCKET",
-    messagingSenderId: "TU_MESSAGING_SENDER_ID",
-    appId: "appmew",
-    measurementId: "appmew-f5c47"
+    apiKey: "AIzaSyDaHLSNDdqmcu8MjC2uwUSKsLIg2jBycKU",
+    authDomain: "trav-4049c.firebaseapp.com",
+    projectId: "trav-4049c",
+    storageBucket: "trav-4049c.appspot.com",
+    messagingSenderId: "152237832239",
+    appId: "1:152237832239:web:1e953a61bebad9dca42eda"
   }
 };
