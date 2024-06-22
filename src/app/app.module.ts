@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';  // Cambia a '@angular/fire/compat'
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';  // Cambia a '@angular/fire/compat/auth'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -13,11 +14,10 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),  // Inicializa AngularFire correctamente
     AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
