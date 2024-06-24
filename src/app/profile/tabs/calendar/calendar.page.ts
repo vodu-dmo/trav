@@ -8,12 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage {
-  selectedDate: Date = new Date(); // Inicializar con una fecha por defecto
+  selectedDate: string; // Declarar selectedDate como string para manejar la fecha
+  
+  constructor() {
+    this.selectedDate = new Date().toISOString(); // Inicializar con la fecha actual
+  }
 
-  constructor() {}
-
-  dateSelected(selectedDate: Date) {
-    this.selectedDate = selectedDate;
+  dateSelected(event: CustomEvent) {
+    const selectedDate = new Date(event.detail.value); // Obtener la fecha seleccionada del evento
+    this.selectedDate = selectedDate.toISOString(); // Convertir la fecha a ISO string
     console.log('Selected Date:', this.selectedDate);
   }
 }
