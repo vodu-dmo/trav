@@ -7,7 +7,5 @@
 </ion-header>
 
 <ion-content>
-  <!-- Usar [(ngModel)] para enlazar selectedDate -->
-  <ion-calendar [(ngModel)]="selectedDate" (onChange)="dateSelected($event.detail)"></ion-calendar>
+  <ion-calendar [(ngModel)]="selectedDate" (onChange)="dateSelected($event)"></ion-calendar>
 </ion-content>
-
