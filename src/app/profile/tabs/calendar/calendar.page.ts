@@ -8,11 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage {
-  selectedDate: Date = new Date(); 
-  constructor() { }
+  selectedDate: Date;
 
-  dateSelected(event: Date) {
-    console.log('Fecha seleccionada:', event);
-    // lógica para manejar la fecha seleccionada
+  constructor() {
+    this.selectedDate = new Date(); 
+  }
 
+    dateSelected(event: CustomEvent<Date>) {
+      if (event.detail !== undefined) {
+        this.selectedDate = event.detail;
+        console.log('Fecha seleccionada:', this.selectedDate);
+    }
 }
