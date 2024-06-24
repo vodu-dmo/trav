@@ -1,5 +1,3 @@
-// calendar.page.ts
-
 import { Component } from '@angular/core';
 
 @Component({
@@ -14,8 +12,12 @@ export class CalendarPage {
     this.selectedDate = new Date();
   }
 
-  dateSelected(event: CustomEvent) {
-    // Aquí puedes manejar el evento
-    console.log('Fecha seleccionada:', event.detail.value);
+  dateSelected(event: any) {
+    const customEvent = event as CustomEvent;
+    if (customEvent.detail && customEvent.detail.value) {
+      console.log('Fecha seleccionada:', customEvent.detail.value);
+    } else {
+      console.log('El evento no contiene un detalle esperado.');
+    }
   }
 }
