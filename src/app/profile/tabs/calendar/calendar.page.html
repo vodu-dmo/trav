@@ -1,5 +1,3 @@
-<!-- calendar.page.html -->
-
 <ion-header>
   <ion-toolbar>
     <ion-title>Calendario</ion-title>
@@ -7,5 +5,5 @@
 </ion-header>
 
 <ion-content>
-  <ion-calendar [(ngModel)]="selectedDate"></ion-calendar>
+  <ion-calendar [(ngModel)]="selectedDate" (onChange)="dateSelected($event)"></ion-calendar>
 </ion-content>
