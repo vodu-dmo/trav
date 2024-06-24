@@ -12,8 +12,8 @@ export class CalendarPage {
 
   constructor() {}
 
-  dateSelected(event: CustomEvent<any>) {
-    this.selectedDate = event.detail.value;
+  dateSelected(selectedDate: Date) {
+    this.selectedDate = selectedDate;
     console.log('Selected Date:', this.selectedDate);
   }
 }
