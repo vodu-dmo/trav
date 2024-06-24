@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
+import { AuthService } from '../services/auth.service';  
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,31 +8,37 @@ import firebase from 'firebase/compat/app';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-
   email: string = '';
   password: string = '';
-
-  constructor(private afAuth: AngularFireAuth) { }
-
-  async loginWithGoogle() {
-    try {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      const credential = await this.afAuth.signInWithPopup(provider);
-      // Usuario autenticado con éxito, realiza las acciones necesarias
-    } catch (error) {
-      console.error('Error al iniciar sesión con Google:', error);
-    }
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   async login() {
     try {
-      const credential = await this.afAuth.signInWithEmailAndPassword(this.email, this.password);
-      // Usuario autenticado con éxito, realiza las acciones necesarias
+      await this.authService.emailPasswordLogin(this.email, this.password);
+      this.router.navigate(['/profile']);
     } catch (error) {
-      console.error('Error al iniciar sesión:', error);
+      console.error('Error during login:', error);
+      // Manejar el error apropiadamente, por ejemplo, mostrando un mensaje al usuario
     }
   }
 
+  async loginWithGoogle() {
+    try {
+      await this.authService.googleSignIn();
+      this.router.navigate(['/profile']);
+    } catch (error) {
+      console.error('Error during Google login:', error);
+      // Manejar el error apropiadamente, por ejemplo, mostrando un mensaje al usuario
+    }
+  }
+
+  async logout() {
+    try {
+      await this.authService.signOut();
+      this.router.navigate(['/']);
+    } catch (error) {
+      console.error('Error during logout:', error);
+      // Manejar el error apropiadamente, por ejemplo, mostrando un mensaje al usuario
+    }
+  }
 }
-
-
