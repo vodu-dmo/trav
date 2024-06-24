@@ -14,7 +14,7 @@ export class CalendarPage {
     this.selectedDate = new Date().toISOString(); // Inicializar con la fecha actual
   }
 
-  dateSelected(event: CustomEvent) {
+  dateSelected(event: CustomEvent<any>) {
     const selectedDate = new Date(event.detail.value); // Obtener la fecha seleccionada del evento
     this.selectedDate = selectedDate.toISOString(); // Convertir la fecha a ISO string
     console.log('Selected Date:', this.selectedDate);
