@@ -1,16 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.page.html',
-  styleUrls: ['./calendar.page.scss'],
+@Injectable({
+  providedIn: 'root'
 })
-export class CalendarPage implements OnInit {
+export class CalendarService {
+  private calendarCollection: AngularFirestoreCollection<any>;
 
-  constructor() { }
-
-  ngOnInit() {
-    // Añade la lógica del calendario aquí
+  constructor(private afs: AngularFirestore) {
+    this.calendarCollection = this.afs.collection<any>('calendars');
   }
 
+  // Crear un evento en el calendario
+  createEvent(eventData: any): Promise<void> {
+    const id = this.afs.createId();
+    return this.calendarCollection.doc(id).set(eventData);
+  }
+
+  // Obtener todos los eventos del calendario
+  getEvents(): Observable<any[]> {
+    return this.calendarCollection.valueChanges({ idField: 'eventId' });
+  }
+
+  // Actualizar un evento en el calendario
+  updateEvent(eventId: string, eventData: any): Promise<void> {
+    return this.calendarCollection.doc(eventId).update(eventData);
+  }
+
+  // Eliminar un evento del calendario
+  deleteEvent(eventId: string): Promise<void> {
+    return this.calendarCollection.doc(eventId).delete();
+  }
 }
+
