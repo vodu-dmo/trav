@@ -15,7 +15,7 @@ export class LoginPage {
   async login() {
     try {
       await this.authService.emailPasswordLogin(this.email, this.password);
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/perfil']);
     } catch (error) {
       console.error('Error during login:', error);
       // Manejar el error apropiadamente, por ejemplo, mostrando un mensaje al usuario
@@ -25,7 +25,7 @@ export class LoginPage {
   async loginWithGoogle() {
     try {
       await this.authService.googleSignIn();
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/perfil']);
     } catch (error) {
       console.error('Error during Google login:', error);
       // Manejar el error apropiadamente, por ejemplo, mostrando un mensaje al usuario
