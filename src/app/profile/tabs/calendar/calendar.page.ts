@@ -12,12 +12,10 @@ export class CalendarPage {
     this.selectedDate = new Date();
   }
 
-  dateSelected(event: any) {
-    const customEvent = event as CustomEvent;
-    if (customEvent.detail && customEvent.detail.value) {
-      console.log('Fecha seleccionada:', customEvent.detail.value);
-    } else {
-      console.log('El evento no contiene un detalle esperado.');
-    }
+  dateSelected(event: CustomEvent) {
+    // Aquí puedes manejar el evento
+    console.log('Fecha seleccionada:', event.detail.value);
+    this.selectedDate = event.detail.value; // Actualiza la fecha seleccionada
   }
 }
+
