@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: 'calendar',
-        loadChildren: () => import('../calendar/calendar.module').then(m => m.CalendarPageModule)
+        loadChildren: () => import('./tabs/calendar/calendar.module').then(m => m.CalendarPageModule)
       },
       {
         path: 'settings',
