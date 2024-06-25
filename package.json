@@ -26,6 +26,7 @@
     "@capacitor/core": "6.1.0",
     "@ionic/angular": "^8.2.2",
     "firebase": "^10.12.2",
+    "ion2-calendar": "^3.5.0",
     "ionic2-calendar": "^2.4.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
