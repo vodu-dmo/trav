@@ -1,12 +1,11 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
 import { CalendarPageRoutingModule } from './calendar-routing.module';
 import { CalendarPage } from './calendar.page';
-import { NgCalendarModule } from 'ion2-calendar';
-
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   imports: [
@@ -14,9 +13,8 @@ import { NgCalendarModule } from 'ion2-calendar';
     FormsModule,
     IonicModule,
     CalendarPageRoutingModule,
-    NgCalendarModule
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
-  declarations: [CalendarPage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Agrega esto si ion-calendar es un Web Component
+  declarations: [CalendarPage]
 })
 export class CalendarPageModule {}

@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: 'calendar',
-        loadChildren: () => import('./tabs/calendar/calendar.module').then(m => m.CalendarPageModule)
+        loadChildren: () => import('../calendar/calendar.module').then(m => m.CalendarPageModule)
       },
       {
         path: 'settings',
@@ -37,4 +37,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class ProfilePageRoutingModule {}
-

@@ -1,24 +1,21 @@
 import { Component } from '@angular/core';
-import { CalendarComponentOptions } from 'ion2-calendar';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { startOfDay, endOfDay } from 'date-fns';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.page.html',
-  styleUrls: ['./calendar.page.scss'],
+  styleUrls: ['./calendar.page.scss']
 })
 export class CalendarPage {
-  selectedDate: Date;
-  options: CalendarComponentOptions = {
-    from: new Date(2000, 0, 1),
-    to: new Date(2030, 11, 31),
-  };
-
-  constructor() {
-    this.selectedDate = new Date();
-  }
-
-  dateSelected(event: any) {
-    console.log('Fecha seleccionada:', event);
-    this.selectedDate = event;
-  }
+  view: CalendarView = CalendarView.Month;
+  viewDate: Date = new Date();
+  events: CalendarEvent[] = [
+    {
+      start: startOfDay(new Date()),
+      end: endOfDay(new Date()),
+      title: 'An event',
+      color: { primary: '#e3bc08', secondary: '#FDF1BA' }
+    }
+  ];
 }
