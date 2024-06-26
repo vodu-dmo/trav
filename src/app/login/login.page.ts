@@ -11,24 +11,38 @@ import { FirestoreService } from '../services/firestore.service';
 export class LoginPage {
   email: string = '';
   password: string = '';
-  constructor(private authService: AuthService,private firestoreService: FirestoreService, private router: Router) {}
+
+  constructor(
+    private authService: AuthService,
+    private firestoreService: FirestoreService,
+    private router: Router
+  ) {}
 
   async login() {
     try {
       const userCredential = await this.authService.login(this.email, this.password);
-      const uid = userCredential.user.uid;
-      const userData = await this.firestoreService.getUser(uid).toPromise();
-      console.log(userData);
+      if (userCredential && userCredential.user) {
+        const uid = userCredential.user.uid;
+        const userData = await this.firestoreService.getUser(uid).toPromise();
+        console.log(userData);
+      } else {
+        throw new Error('User credential is null');
+      }
     } catch (error) {
       console.error(error);
     }
   }
+
   async register() {
     try {
       const userCredential = await this.authService.register(this.email, this.password);
-      const uid = userCredential.user.uid;
-      const userData = { email: this.email, displayName: 'User Name', photoURL: '...' };
-      await this.firestoreService.createUser(uid, userData);
+      if (userCredential && userCredential.user) {
+        const uid = userCredential.user.uid;
+        const userData = { email: this.email, displayName: 'User Name', photoURL: '...' };
+        await this.firestoreService.createUser(uid, userData);
+      } else {
+        throw new Error('User credential is null');
+      }
     } catch (error) {
       console.error(error);
     }
@@ -40,7 +54,6 @@ export class LoginPage {
       this.router.navigate(['/perfil']);
     } catch (error) {
       console.error('Error during Google login:', error);
-      // Manejar el error apropiadamente, por ejemplo, mostrando un mensaje al usuario
     }
   }
 
@@ -50,7 +63,6 @@ export class LoginPage {
       this.router.navigate(['/']);
     } catch (error) {
       console.error('Error during logout:', error);
-      // Manejar el error apropiadamente, por ejemplo, mostrando un mensaje al usuario
     }
   }
 }
