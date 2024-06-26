@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';  
 import { Router } from '@angular/router';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,26 @@ import { Router } from '@angular/router';
 export class LoginPage {
   email: string = '';
   password: string = '';
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService,private firestoreService: FirestoreService, private router: Router) {}
 
   async login() {
     try {
-      await this.authService.emailPasswordLogin(this.email, this.password);
-      this.router.navigate(['/perfil']);
+      const userCredential = await this.authService.login(this.email, this.password);
+      const uid = userCredential.user.uid;
+      const userData = await this.firestoreService.getUser(uid).toPromise();
+      console.log(userData);
     } catch (error) {
-      console.error('Error during login:', error);
-      // Manejar el error apropiadamente, por ejemplo, mostrando un mensaje al usuario
+      console.error(error);
+    }
+  }
+  async register() {
+    try {
+      const userCredential = await this.authService.register(this.email, this.password);
+      const uid = userCredential.user.uid;
+      const userData = { email: this.email, displayName: 'User Name', photoURL: '...' };
+      await this.firestoreService.createUser(uid, userData);
+    } catch (error) {
+      console.error(error);
     }
   }
 
